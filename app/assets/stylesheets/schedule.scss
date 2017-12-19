@@ -1,0 +1,98 @@
+#schedule {
+  color: #333;
+  background-color: #fff;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+
+  .schedule-day {
+    text-transform: uppercase;
+  }
+
+  .schedule-body {
+    background-color: #ffffff;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    padding-top: 1rem;
+
+    @include breakpoint(large up) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+
+    .session-block {
+      margin-bottom: 3rem;
+
+      .session-block-title {
+        float: left;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        margin-top: 0;
+
+        @include breakpoint(medium up) {
+          font-size: 1.4375rem;
+        }
+      }
+
+      .time {
+        font-weight: 200;
+        padding: 0.2rem 0 !important;
+        text-align: center;
+        background: #ECECEC;
+        color: #2D2D2D;
+
+        @include breakpoint(medium up) {
+          font-size: 1.2rem;
+          padding: 0;
+          background: #fff;
+          text-align: right;
+          color: #989898;
+        }
+
+        @include breakpoint(large up) {
+          font-size: 1.125rem;
+        }
+      }
+
+      .on-air {
+        margin-left: 9px;
+        margin-top: 6px;
+        font-size: 0.7rem !important;
+
+        @include breakpoint(medium up) {
+          margin-top: 7px;
+        }
+      }
+
+      .session-container {
+        border-left: 1px solid #DADADA;
+
+        .session {
+          margin-bottom: 1.5rem;
+
+          .session-title {
+            font-size: 1.2rem;
+            color: #333;
+            display: inline-block;
+            margin: 0;
+            font-weight: 400;
+          }
+
+          p {
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            font-weight: 200;
+            color: #818181;
+          }
+
+          a {
+            margin: 0;
+            margin-top: 0.4rem;
+            // padding: 0.875rem;
+          }
+        }
+      }
+    }
+  }
+}

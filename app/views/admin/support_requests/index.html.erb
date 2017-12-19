@@ -1,0 +1,36 @@
+<div class="panel">
+  <div class="clearfix">
+      <h1 class="float-left">Support Requests</h1>
+  </div>
+
+  <table class="sortable-table responsive">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Created At</th>
+        <th>Completed</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @support_requests.each do |support_request| %>
+        <tr>
+          <td><%= support_request.email %></td>
+          <td><%= support_request.name %></td>
+          <td><%= support_request.subject %></td>
+          <td><%= support_request.created_at.strftime('%b %d %Y %I:%M%p') %></td>
+          <td><%= readable_boolean(support_request.completed) %></td>
+          <td>
+            <div class="float-right">
+              <%= link_to '<i class="fi-pencil tooltips" data-original-title="Edit Communicator" title="Edit Communicator"></i>'.html_safe, edit_admin_support_request_path(support_request), class: "action-button edit" %>
+              <%= link_to '<i class="fi-trash tooltips" data-original-title="Delete Communicator" title="Delete Communicator"></i>'.html_safe, admin_support_request_path(support_request), method: :delete, data: { confirm: 'Are you sure?' }, class: "action-button delete" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

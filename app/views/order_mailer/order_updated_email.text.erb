@@ -1,0 +1,14 @@
+Hello <%= @user.first_name %>,
+
+Your Drive Online 2017 order has been updated.
+You now have <%= @user.invitation_limit + 1 %> tickets!
+
+=====================
+
+You can manage your purchased tickets by signing in to your account below.
+
+<a href="<%= account_url %>">Your Account</a>
+
+=====================
+
+The Drive Online Team

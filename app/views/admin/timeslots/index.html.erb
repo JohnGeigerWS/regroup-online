@@ -1,0 +1,39 @@
+<div class="panel">
+  <div class="clearfix">
+      <h1 class="float-left">Timeslots</h1>
+      <%= link_to 'New Timeslot', new_admin_timeslot_path, class: "button float-right" %>
+  </div>
+
+  <table class="sortable-table responsive">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Permalink</th>
+        <th>Start time</th>
+        <th>End time</th>
+        <th>Player Start time</th>
+        <th>Player End time</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @timeslots.each do |timeslot| %>
+        <tr>
+          <td><%= timeslot.name %></td>
+          <td><%= timeslot.permalink %></td>
+          <td><%= timeslot.start_time.strftime('%b %d %Y %I:%M%p') %></td>
+          <td><%= timeslot.end_time.strftime('%b %d %Y %I:%M%p') %></td>
+          <td><%= timeslot.player_start_time.strftime('%I:%M%p') %></td>
+          <td><%= timeslot.player_end_time.strftime('%I:%M%p') %></td>
+          <td>
+            <div class="float-right">
+              <%= link_to '<i class="fi-pencil tooltips" data-original-title="Edit Timeslot" title="Edit Timeslot"></i>'.html_safe, edit_admin_timeslot_path(timeslot), class: "action-button edit" %>
+              <%= link_to '<i class="fi-trash tooltips" data-original-title="Delete Timeslot" title="Delete Timeslot"></i>'.html_safe, admin_timeslot_path(timeslot), method: :delete, data: { confirm: 'Are you sure?' }, class: "action-button delete" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

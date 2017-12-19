@@ -1,0 +1,153 @@
+.panel {
+  padding: 1.25rem;
+  background: $white;
+  border: none;
+  @extend .shadow;
+
+  h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 1rem;
+  }
+
+  header {
+    border-bottom: 1px solid $offwhite;
+    margin-bottom: 2rem;
+  }
+
+  &.login {
+    margin: 6.8rem 0 7.4rem 0;
+    padding-top: 2rem;
+    padding-bottom: 0;
+
+    span.prefix, label.prefix {
+      color: $grey;
+      background: transparent;
+      border: none;
+      text-align: left;
+
+      i {
+        font-size: 24px;
+      }
+    }
+
+    .login-button {
+      padding-top: 1rem;
+      padding-bottom: 1.0625rem;
+      margin: 0 0 1.25rem;
+      background: $dark-green;
+      font-size: 1rem;
+
+      &:hover {
+        background: darken($dark-green, 4%);
+      }
+    }
+
+    .panel-heading {
+      border-bottom: solid 1px #ddd;
+    }
+  }
+
+  .has-tip.fi-info {
+    font-size: 24px;
+    margin-left: 10px;
+  }
+
+  .button.right {
+    margin-left: 5px;
+  }
+}
+
+.info-panel {
+  @extend .thin;
+  background: $white;
+  border: 1px solid $lightgrey;
+  padding: 1rem 2rem 1.5rem;
+  margin-bottom: 2rem;
+  @extend .shadow;
+
+  >.button, >button {
+    margin: 1rem 0 0;
+  }
+
+  h2,h3 {
+    color: $softgrey;
+    font-weight: 200;
+  }
+
+  ul {
+    @extend .info-list;
+    text-align: left;
+    background: #fff;
+    margin-bottom: 0;
+  }
+}
+
+.action-panel {
+  background: $white;
+  border: 1px solid $lightgrey;
+  padding: 0;
+  margin-bottom: 2rem;
+  @extend .shadow;
+
+    header {
+      padding: 1rem 1rem;
+      border-bottom: 1px solid $offwhite;
+
+      h1,h2,h3 {
+        margin-bottom: 0;
+      }
+
+      .button, a.button, button {
+        margin-bottom: 0;
+        margin-left: .5rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: 0.9rem;
+      }
+
+    }
+
+    footer {
+      background: $softwhite;
+      border-top: 1px solid $lightgrey;
+      padding: .5rem 1rem;
+
+      a.button, button, .button {
+        margin-bottom: 0;
+      }
+
+      span {
+        font-size: .8rem;
+        color: $softgrey;
+        line-height: 35px;
+      }
+    }
+
+    .content {
+      padding: 1rem 1rem 1.5rem;
+    }
+
+}
+
+
+
+@include breakpoint(small only) {
+  .panel, .info-panel, .tabs-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.panel-with-heading {
+
+  padding: 0;
+
+  .panel-heading {
+    padding: 1.25rem;
+  }
+  .panel-body {
+    padding: 1.25rem;
+  }
+
+}

@@ -1,0 +1,13 @@
+body#sessions {
+  .shadowed {
+    @include dark_shadow();
+  }
+  
+  .media-container {
+    padding-top: 2rem;
+  }
+
+  #slideshow-container {
+    margin-bottom: 1rem;
+  }
+}

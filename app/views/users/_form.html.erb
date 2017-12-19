@@ -1,0 +1,13 @@
+<%= form_tag tickets_path do %>
+  <%= text_field_tag :first_name, nil, placeholder: "First Name" %>
+  <%= text_field_tag :last_name, nil, placeholder: "Last Name" %>
+  <%= text_field_tag :email, nil, placeholder: "email@example.com"  %>
+  <%= hidden_field_tag :invite_user, @user.id %>
+  <div class="clearfix">
+    <% if @user.has_invitations_left? %>
+      <%= submit_tag "Send the Ticket Invite", class: 'button small text-center float-right' %>
+    <% else %>
+      <h5>No more tickets available</h5>
+    <% end %>
+  </div>
+<% end %>

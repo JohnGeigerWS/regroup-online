@@ -1,0 +1,54 @@
+<% content_for :content do %>
+  <tr>
+    <td class="container-padding content" style="font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:16px;padding-left:42px;padding-right:42px;padding-top:50px;padding-bottom:40px;background-color:#ffffff; color:#666;">
+      <table>
+        <tr>
+          <td align="left" style="font-size: 26px;color:#7D7D7D; padding-bottom:24px; font-weight:200;">
+            New Support Request
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size: 18px;line-height: 24px;color: #7D7D7D; padding-bottom:12px;">
+            <strong>From</strong>
+            <br>
+            <%= @support_request.name %> &lt;<%= @support_request.email %>&gt;
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size: 18px;line-height: 24px;color: #7D7D7D; padding-bottom:12px;">
+            <strong>Subject</strong>
+            <br>
+            <%= @support_request.subject %>
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size: 18px;line-height: 24px;color: #7D7D7D; padding-bottom:12px;">
+            <strong>Message</strong>
+            <br>
+            <%= @support_request.message %>
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size: 18px;line-height: 24px;color: #7D7D7D; padding-bottom:12px;">
+            <%= link_to "[View full support request]", edit_admin_support_request_url(@support_request) %>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+
+<% end %>
+<%= render template: "devise/mailer/layout" %>

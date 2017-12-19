@@ -1,0 +1,39 @@
+body#live {
+
+  .breakout_container {
+    margin-bottom: 1rem;
+
+    @include breakpoint(medium up) {
+      margin-top: 3rem;
+      margin-bottom: 5.4rem;
+    }
+
+    img {
+      margin-bottom: 0.6rem;
+      @include dark_shadow();
+
+      @include breakpoint(medium up) {
+        margin-bottom: 0;
+      }
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 0;
+
+      li {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+
+        .breakout_title {
+          color: #f7f7f7;
+          text-align: center;
+
+          @include breakpoint(medium up) {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}

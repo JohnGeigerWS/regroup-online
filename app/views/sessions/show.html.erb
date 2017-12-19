@@ -1,0 +1,161 @@
+<div class="row">
+  <div class="column">
+    <div id="media-container" class="media-container">
+      <div id="player-container" class="shadowed <%= @session_presenter.player_available? ? '' : 'hide' %>">
+        <div id="player" class='flex-video widescreen vimeo video-player'>
+          <%= @session_presenter.active_embed.html_safe %>
+        </div>
+      </div>
+
+      <div id="slideshow-container" class="shadowed <%= @session_presenter.player_available? ? 'hide' : '' %>">
+        <%= render 'sessions/slideshow' %>
+      </div>
+
+      <div class="message-information">
+        <h3 class="message-title"><%= @session_presenter.title %></h3>
+        <h4 class="message-speaker"><%= @session_presenter.communicators %></h4>
+        <p><%= @session_presenter.description %></p>
+
+        <% if @session_presenter.pdf %>
+          <%= link_to "<i class='fi-download'></i> #{ @session_presenter.pdf.label }".html_safe, @session_presenter.pdf.value, class: "button small", target: "_blank" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<%= content_for :js do %>
+  <script>
+    var sessionPresenter = <%= @session_presenter.serialized.html_safe %>;
+    NPM = NPM || {};
+
+    NPM.playerAndSlideshow = {
+      $slideshowContainer: $("#slideshow-container"),
+      loadTime: +(new Date()),
+      sessionCheckURL: "<%= @session_presenter.poll_url %>",
+      poll: null,
+      elapsedTime: function() {
+        var now = +(new Date());
+        return (now - this.loadTime) / 1000;
+      },
+      startSession: function(sessionPresenter) {
+        NPM.playerAndSlideshow.turnOnPlayer( sessionPresenter.live_embed );
+        NPM.playerAndSlideshow.turnOffSlideshow();
+      },
+      stopSession: function() {
+        NPM.playerAndSlideshow.turnOffPlayer();
+        NPM.playerAndSlideshow.turnOnSlideshow();
+      },
+      turnOnPlayer: function(player) {
+        $("#player-container").removeClass("hide");
+        $("#player").html( player );
+      },
+      turnOffPlayer: function() {
+        $("#player-container").addClass("hide");
+        $("#player").html("");
+      },
+      turnOnSlideshow: function() {
+        NPM.playerAndSlideshow.$slideshowContainer.removeClass("hide");
+        $slickSlideshow.slick('setPosition');
+      },
+      turnOffSlideshow: function() {
+        NPM.playerAndSlideshow.$slideshowContainer.addClass("hide");
+      },
+      pollSession: function() {
+        var timeRemaining = sessionPresenter.time_until_end - this.elapsedTime();
+        var maximumTimeBetweenPolls = 60 * 5; // 5 minutes
+        var minimumTimeBetweenPolls = 30;     // 30 seconds
+
+        pollDuration = timeRemaining / 2;
+        if(pollDuration > maximumTimeBetweenPolls) pollDuration = maximumTimeBetweenPolls;
+        if(pollDuration < minimumTimeBetweenPolls) pollDuration = minimumTimeBetweenPolls;
+        
+        var checkPromise = NPM.playerAndSlideshow.checkSession();
+
+        checkPromise.done(function(response) {
+          if(response.finished_at == null) {
+            console.log("Scheduling a new poll in " + pollDuration + " seconds");
+            NPM.playerAndSlideshow.poll = setTimeout(function() {
+              NPM.playerAndSlideshow.pollSession();
+            }, pollDuration * 1000);
+          }else{
+            console.log("Session was closed");
+            NPM.playerAndSlideshow.turnOffPlayer();
+            NPM.playerAndSlideshow.turnOnSlideshow();
+          }
+        });
+
+        checkPromise.fail(function() {
+          console.log("Scheduling a new poll in " + pollDuration + " seconds");
+          NPM.playerAndSlideshow.poll = setTimeout(function() {
+            NPM.playerAndSlideshow.pollSession();
+          }, pollDuration * 1000);
+        });
+      },
+      clearPoll: function() {
+        if(NPM.playerAndSlideshow.poll) {
+          clearTimeout(NPM.playerAndSlideshow.poll);
+        }
+      },
+      checkSession: function() {
+        console.log("Checking the server for updates for the session");
+        return $.get(this.sessionCheckURL);
+      }
+    };
+
+    //
+    // If the session has not yet started, schedule the page to turn on the player, turn off the slideshow, and set up session polling
+    //
+    if(sessionPresenter.time_until_start > 0) {
+      NPM.utils.delay(function() {
+        NPM.playerAndSlideshow.startSession( sessionPresenter );
+        // NPM.playerAndSlideshow.pollSession();
+      }, sessionPresenter.time_until_start );
+    }
+
+    if(!sessionPresenter.is_finished) {
+      var sessionsChannel = App.cable.subscriptions.create({
+        channel: "SessionsChannel",
+        session: "<%= @session_presenter.channel_id %>"
+      },{
+        connected: function() {
+          console.log("Connected to action cable");
+          NPM.playerAndSlideshow.clearPoll();
+        },
+        disconnected: function() {
+          console.log("Disconnected from action cable");
+
+          if(NPM.playerAndSlideshow.poll) {
+            console.log("Already polling, let's not start polling again!");
+            return;
+          }
+
+          App.cable.disconnect();
+
+          NPM.playerAndSlideshow.pollSession();
+        },
+        rejected: function() {
+          console.log("Rejected from action cable");
+
+          if(NPM.playerAndSlideshow.poll) {
+            console.log("Already polling, let's not start polling again!");
+            return;
+          }
+
+          App.cable.disconnect();
+          
+          NPM.playerAndSlideshow.pollSession();
+        },
+        received: function(data) {
+          var session = data.session;
+          if(session.finished_at != null) {
+            console.log("Session was closed");
+            NPM.playerAndSlideshow.turnOffPlayer();
+            NPM.playerAndSlideshow.turnOnSlideshow();
+          }
+        }
+      });
+    }
+  </script>
+<% end %>

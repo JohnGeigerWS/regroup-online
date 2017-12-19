@@ -1,0 +1,56 @@
+<%= form_for([:admin, @session]) do |f| %>
+  <% if @session.errors.any? %>
+    <%= render partial: 'admin/partials/alert', locals: {item: @session, item_type: 'session'} %>
+  <% end %>
+
+  <%= render partial: 'admin/partials/select_field', locals: {  f: f, field_name: :timeslot_id, select_options: { collection: @timeslots, value: :id, text: :name, placeholder: "Select a timeslot" }} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :title} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :permalink} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_area', field_name: :description} %>
+
+
+  <div class="row collapse">
+    <div class="small-12 medium-4 columns">
+      <%= f.label "Presenters", class: 'prefix' %>
+    </div>
+    <div class="small-12 medium-8 columns">
+      <div class="presenter-container">
+        <div class="presenter-instance">
+            <%= f.fields_for :presenters do |presenter| %>
+                <%= render 'presenter_fields', f: presenter %>
+            <% end %>
+        </div>
+        <%= link_to_add_association "<span class='fi-plus' /> Communicator</span>".html_safe, f, :presenters,
+          'data-association-insertion-method' => 'append',
+          'data-association-insertion-node' => '.presenter-instance',
+          render_options: { wrapper: 'inline' },
+          class: "add-field" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row collapse">
+    <div class="small-12 medium-4 columns">
+      <%= f.label "Assets", class: 'prefix' %>
+    </div>
+    <div class="small-12 medium-8 columns">
+      <div class="asset-container">
+        <div class="asset-instance">
+            <%= f.fields_for :assets do |asset| %>
+                <%= render 'asset_fields', f: asset %>
+            <% end %>
+        </div>
+        <%= link_to_add_association "<span class='fi-plus' /> Asset</span>".html_safe, f, :assets,
+          'data-association-insertion-method' => 'append',
+          'data-association-insertion-node' => '.asset-instance',
+          render_options: { wrapper: 'inline' },
+          class: "add-field" %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <%= render partial: 'admin/partials/submit_button', locals: {f: f} %>
+<% end %>

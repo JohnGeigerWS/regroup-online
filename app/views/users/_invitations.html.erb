@@ -1,0 +1,93 @@
+<h4>Manage Current Tickets</h4>
+
+<% if @user.invitations.count >= 1 %>
+  <% if @user.invitations.count > 6 %>
+    <div id="filters" class='filter-buttons clearfix'>
+      <div class="small-12 columns">
+        <div class="row">
+          <div class="small-12 medium-4 columns search-container">
+            <label>SEARCH TICKETS FOR:</label>
+            <input type="text" id="quicksearch" placeholder="" />
+          </div>
+          <div class="small-12 medium-8 columns filter-container">
+            <label>FILTER TICKETS BY STATUS:</label>
+            <div class="row small-up-3 large-up-5">
+              <div class="column">
+                <button class="button tiny expanded sort-button" data-filter="*">ALL</button>
+              </div>
+              <div class="column">
+                <button class="button tiny expanded sort-button" data-filter=".invited">SENT</button>
+              </div>
+              <div class="column">
+                <button class="button tiny expanded sort-button" data-filter=".created">PROCESSING</button>
+              </div>
+              <div class="column">
+                <button class="button tiny expanded sort-button" data-filter=".activated">COMPLETE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="invitation-collection" class="row small-up-1 medium-up-3">
+    <% @user.invitations.each do |ticket| %>
+      <div class="invitation-container status-needs-setting column column-block">
+        <div class="invitation">
+          <div class="invitation-header">
+            <h5><%= ticket_status(ticket) %></h5>
+          </div>
+
+          <div class="invitation-body">
+            <h4 class="name"><%= ticket.first_name %></h4>
+            <h4 class="name"><%= ticket.last_name %></h4>
+            <h6 class="email"><%= ticket.unconfirmed_email || ticket.email %></h6>
+
+            <div class="row small-up-2">
+              <% unless ticket.invitation_accepted? %>
+              <div class="column">
+                <button href="#" data-open="renew-modal-<%= ticket.id %>" class="button tiny expanded green">RESEND</button>
+              </div>
+              <% end %>
+
+              <div class="column">
+                <button href="#" data-open="edit-modal-<%= ticket.id %>" class="button tiny expanded red">REVOKE</button>
+              </div>
+            </div>
+
+            <% # MODALS FOR BUTTONS %>
+            <div id="edit-modal-<%= ticket.id %>" class="reveal small" data-reveal>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                  <div class="small-12 columns">
+                    <h3>Are you sure you want to revoke the invitation to <%= ticket.email %>?</h3>
+
+                    <%= button_to "Submit", user_revoke_invitation_path(ticket), class: "button small expanded" %>
+                  </div>
+                </div>
+              </div>
+
+            <div id="renew-modal-<%= ticket.id %>" class="reveal small" data-reveal>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                  <div class="small-12 columns">
+                    <h3>Are you sure you want to re-send the invitation to <%= ticket.email %>?</h3>
+                    <%= button_to "Submit", user_resend_invitation_path(ticket), class: "button small expanded" %>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+
+<% else %>
+    <h3>No invitations have been sent.</h3>
+<% end %>

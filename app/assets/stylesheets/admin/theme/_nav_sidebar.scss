@@ -1,0 +1,65 @@
+// TODO: Needs Re-Work
+.side-nav {
+  width: 220px;
+  padding: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 1;
+
+  li ul {
+    list-style-type: none;
+  }
+
+  li {
+    position: relative;
+
+      a:not(.button) {
+      color: $offwhite;
+      font-size: 1rem;
+
+      &:hover {
+        color: $green;
+      }
+    }
+
+    > span {
+      color: $lightgrey;
+      padding: 0 1rem;
+    }
+
+    &.active>a:first-child:not(.button) {
+      color: $green;
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 0;
+    }
+  }
+
+  li.divider {
+    border-top-color: #454545;
+  }
+
+  .hasChildren:before{
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 5px;
+    border-color: transparent transparent transparent rgba(255,255,255, 0.4);
+    border-top-style: solid;
+    margin-top: -2.5px;
+    top: 1.10625rem;
+    position: absolute;
+    right: 1rem;
+  }
+  .hasChildren.active:before{
+    top: 1.30625rem;
+    border-color: rgba(255,255,255, 0.4) transparent transparent transparent;
+  }
+
+
+}

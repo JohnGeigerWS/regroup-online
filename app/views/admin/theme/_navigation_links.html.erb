@@ -1,0 +1,15 @@
+<li><%= link_to 'Timeslots', admin_timeslots_path %></li>
+<li><%= link_to 'Sessions', admin_sessions_path %></li>
+<li><%= link_to 'Communicators', admin_communicators_path %></li>
+<li><%= link_to 'Users', admin_users_path %></li>
+<li><%= link_to 'Support Requests', admin_support_requests_path %></li>
+
+<% if can? :manage, :all %>
+<li class="has-submenu">
+  <a href="#">Tools</a>
+  <ul class="submenu menu vertical" data-submenu>
+    <li><%= link_to 'Heroku Dashboard', 'https://dashboard.heroku.com', target: '_blank' %></li>
+    <li><%= link_to 'Sidekiq Web UI', admin_sidekiq_web_path, target: '_blank' %></li>
+  </ul>
+</li>
+<% end %>

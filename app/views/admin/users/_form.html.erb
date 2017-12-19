@@ -1,0 +1,18 @@
+<%= form_for([:admin, @user]) do |f| %>
+  <% if @user.errors.any? %>
+    <%= render partial: 'admin/partials/alert', locals: {item: @user, item_type: 'user'} %>
+  <% end %>
+
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :first_name} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :last_name} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :email} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :org_name} %>
+
+  <% if controller.action_name == 'new' %>
+    <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'password_field', field_name: :password} %>
+    <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'password_field', field_name: :password_confirmation} %>
+  <% end %>
+
+  <%= render partial: 'admin/partials/switch', locals: {f: f, field_name: :admin_role} unless current_user == f.object %>
+  <%= render partial: 'admin/partials/submit_button', locals: {f: f} %>
+<% end %>

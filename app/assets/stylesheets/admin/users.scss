@@ -1,0 +1,29 @@
+body#users {
+  .dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+    border-color: white transparent transparent;
+  }
+
+  .mail-menu {
+    padding: 0.6rem;
+
+    li {
+      margin-bottom: 0.6rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  tbody {
+    .menu > li > a {
+      padding: 0.51rem 1rem;
+      margin-top: -3px;
+    }
+  }
+
+  .fi-mail {
+    padding-right: 5px;
+    font-size: 1.1rem;
+  }
+}

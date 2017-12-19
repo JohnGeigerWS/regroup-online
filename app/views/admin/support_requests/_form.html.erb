@@ -1,0 +1,9 @@
+<%= form_for([:admin, @support_request]) do |f| %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :email} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :name} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :subject} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_area', field_name: :message} %>
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_area', field_name: :notes} %>
+  <%= render partial: 'admin/partials/switch', locals: {f: f, field_name: :completed} %>
+  <%= render partial: 'admin/partials/submit_button', locals: {f: f} %>
+<% end %>

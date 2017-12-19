@@ -1,0 +1,19 @@
+<div class="row">
+
+  <div class="session-block row">
+    <% @live_timeslot.sessions.each do |session| %>
+      <h5 class="session-title"><%= session.title %></h5>
+
+      <div>
+        <% if session.live? # set this up if the timeslot is live %>
+          <a href="<%= drive_session_path(session) %>" class="button small left live expanded"></span>Attend Session Now!</a>
+        <% elsif vod_exists?(session) %>
+          <%= link_to "Watch on Demand", drive_session_path(session), class: "button small left live expanded" %>
+        <% else %>
+          <button class="button small left expanded disabled">On Demand Coming Soon</button>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+    
+</div>

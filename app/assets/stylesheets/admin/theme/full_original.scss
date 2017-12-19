@@ -1,0 +1,178 @@
+
+
+
+
+#content {
+  padding-left: 220px;
+  position: relative;
+
+  >.row, >form>.row {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+
+
+// Foundation Overides
+
+.reveal-modal .close-reveal-modal {
+  font-size: 1.5rem;
+}
+
+// text helpers
+
+a.red {
+  color: $red;
+  text-decoration: underline;
+}
+
+a.green {
+  color: $green !important;
+  text-decoration: underline;
+}
+
+a.grey {
+  color: $grey;
+  text-decoration: underline;
+}
+
+.highlight {
+  background: $yellow;
+}
+
+.strong {
+  color: #3dc48e;
+  font-weight: bold;
+}
+
+
+.naked-list {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: 2rem;
+
+  li {
+    padding-bottom: .5rem;
+
+    span {
+      color: $softgrey;
+    }
+  }
+}
+
+.static-field {
+
+  label {
+    text-transform: uppercase;
+    color: $dark;
+  }
+
+  p {
+    color: $softgrey;
+    border-bottom: 1px solid $offwhite;
+  }
+}
+
+
+
+
+.accordion {
+  margin-left: 0;
+  margin-bottom: 2rem;
+  @extend .shadow;
+
+  .accordion-navigation  {
+
+    >a {
+      background: $dark;
+      color: #fff;
+      border-bottom: 1px solid darken( $dark, 20%);
+    }
+
+    &.active>a, >a:hover {
+      color: #fff;
+      background: darken( $primary, 10%);
+    }
+  }
+
+}
+
+.icon-bar {
+  background: $white;
+  border: 1px solid $lightgrey;
+  margin-bottom: 2rem;
+
+  label, i {
+    color: $green;
+  }
+  .item {
+    &:hover {
+      background: $green;
+
+      label, i {
+        color: $white;
+      }
+    }
+  }
+}
+
+.tabs {
+  border-color: $lightgrey;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+}
+
+.tabs-content {
+  background: $white;
+  padding: 1rem 2rem;
+  border: 1px solid $lightgrey;
+  border-top-width: 0;
+}
+
+.progress .meter {
+  color: $white;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: right;
+  padding-right: 5px;
+}
+
+// Mobile only
+@media only screen and (max-width: 40em) {
+  #content {
+    padding-left: 0px;
+  }
+}
+
+
+
+.sub-nav {
+  background: $white;
+  padding: .5rem 0;
+}
+
+
+
+
+
+// CUSTOM COMPONENTS
+
+.page-header-buttons {
+  display: inline-block;
+  margin-top: 12px;
+  margin-left: 8px;
+}
+
+
+// BORDERED COLUMNS
+
+form .row .row .columns.bordered {
+  padding: 0 20px;
+  border-left: solid 1px #eee;
+  margin-bottom: 20px;
+  &:first-child {
+    padding-left: 0.5rem;
+    border-left: none;
+  }
+}

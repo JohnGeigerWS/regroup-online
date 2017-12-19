@@ -1,0 +1,33 @@
+.drive-panel {
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #131313;
+  color: #333;
+
+  .drive-panel-title {
+    padding: 0.7em 0.8em;
+    background: #e3e3e3;
+    font-size: 1.5em;
+    border-bottom: 1px solid #DFDFDF;
+    color: #B5121B;
+    font-weight: 200;
+  }
+
+  .drive-panel-body {
+    padding: 1em;
+
+    p,h1,h2,h3,h4,h5,h6 {
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      background: #eee;
+      color: #464646;
+    }
+
+    input[type="submit"] {
+      margin-top: 1em;
+    }
+  }
+}

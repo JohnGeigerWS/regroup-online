@@ -1,0 +1,24 @@
+<div class="panel">
+  <div class='clearfix'>
+    <%= link_to '&times;'.html_safe, admin_sessions_path, class: 'float-right fake-close-button' %>
+  </div>
+
+  <h1>Editing Session</h1>
+  <% if @session.finished? %>
+    <div class="alert callout">
+      <h5>This session has been marked as finished.</h5>
+    </div>
+  <% end %>
+
+  <%= render 'form' %>
+
+  <div class="callout">
+    <h2>Player Controls</h2>
+    <p>These controls will start and stop the player in the browser</p>
+    <% if @session.finished? %>
+      <%= button_to "Restart the live player for this session", admin_session_restart_path(@session), class: "button expanded alert" %>
+    <% else %>
+      <%= button_to "Shut off the live player for this session", admin_session_finish_path(@session), class: "button expanded alert"  %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+.button, button, input[type="submit"], input[type="button"] {
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: transparent;
+
+  i {
+    display: inline-block;
+    margin: 0 4px;
+
+    &.no-words {
+      margin-right: 0;
+    }
+  }
+}
+
+.button-more:before {
+  content: "•••";
+  text-indent: 0;
+  display: block;
+}
+
+.dropdown.button.secondary:after, button.dropdown.secondary:after {
+  border-color: $primary transparent transparent transparent;
+}
+
+.f-dropdown {
+  @extend .shadow;
+  border-radius: 4px;
+}
+
+button.success, .button.success, button.alert, .button.alert, button.info, .button.info {
+  border-color: transparent;
+}
+
+button.secondary, .button.secondary {
+  background: $white;
+  color: $primary;
+  border-color: $grey;
+
+  &:hover {
+    background: $offwhite;
+    color: $primary;
+  }
+
+}
+
+button.disabled, button[disabled], .button.disabled, .button[disabled] {
+  background: $lightgrey;
+  color: darken( $lightgrey, 40%);
+  border-color: $grey;
+
+  &:hover, &:active, &:visited {
+    background: $lightgrey;
+    color: darken( $lightgrey, 40%);
+  }
+
+}
+
+button.info, .button.info {
+  color: $white;
+}
+
+.action-button {
+  padding: 0.3rem 0.6rem;
+  margin-left: 0.25rem;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+
+  &:hover, &:active {
+    color: #fff;
+  }
+
+  &.edit {
+    background: $green;
+
+    &:hover {
+      background: darken($green, 4%);
+    }
+  }
+
+  &.delete {
+    background: #F93636;
+
+    &:hover {
+      background: darken(#F93636, 4%);
+    }
+  }
+
+  &.mail {
+    background: #1779ba;
+
+    &:hover {
+      background: darken(#1779ba, 4%);
+    }
+  }
+}

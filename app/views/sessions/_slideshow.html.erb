@@ -1,0 +1,16 @@
+<div class="slick-slideshow">
+  <img class="slick-slide" src="https://55fa929e66d164f4bd2b-1cd1bde9f71ff2dc0e23fc9dc5419a6b.ssl.cf5.rackcdn.com/drive_hold_screen.jpg" alt="Drive Online">
+  <img class="slick-slide" src="https://55fa929e66d164f4bd2b-1cd1bde9f71ff2dc0e23fc9dc5419a6b.ssl.cf5.rackcdn.com/drive_on_demand.jpg" alt="Sessions will be available on demand 4 hours after live sessions">
+</div>
+
+<%= content_for :js do %>
+<script>
+  $(function() {
+    window.$slickSlideshow = $('.slick-slideshow').slick({
+      autoplay: true,
+      autoplaySpeed: 5 * 1000,
+      arrows: false
+    });
+  });
+</script>
+<% end %>

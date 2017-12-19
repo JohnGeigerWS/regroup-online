@@ -1,0 +1,204 @@
+body#users {
+
+  // .ticket-tables {
+  //   border-spacing: 0px;
+  //
+  //   .create-ticket {
+  //     background: #E4E4E4;
+  //   }
+  //
+  //   td select, td input {
+  //     margin-bottom: 0;
+  //   }
+  // }
+
+
+  .ticket-container {
+
+    @include breakpoint(medium up) {
+      padding-top: 0.7em;
+    }
+
+    p {
+      margin-bottom: 0;
+      text-align: center;
+      color: #fff;
+
+      .fi-ticket {
+        margin-right: 2px;
+      }
+
+      @include breakpoint(medium up) {
+        float: right;
+        text-align: left;
+      }
+    }
+  }
+
+  .shrink-block-grid {
+    margin-top: 1em;
+
+    li {
+      padding-bottom: 0;
+    }
+  }
+
+  #filters {
+    background: #f8f8f8;
+    padding-top: 0.6em;
+    padding-bottom: 1em;
+    border: 1px solid #ebebeb;
+    margin-bottom: 1em;
+
+    label {
+      color: #aeaeae;
+    }
+
+    .search-container {
+      margin-bottom: 1em;
+
+      @include breakpoint(medium up) {
+        margin-bottom: 0;
+        border-right: 1px solid #ddd;
+      }
+
+      input {
+        margin-bottom: 0;
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #333;
+      }
+    }
+
+    .filter-container {
+      .button {
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        background: #E7E7E7;
+        color: #666;
+
+        &:hover, &:active, &:focus {
+          background: #d7d7d7;
+        }
+
+        @include breakpoint(medium up) {
+          margin-bottom: 0;
+        }
+      }
+
+      @include breakpoint(medium up) {
+        padding-top: 2px;
+      }
+
+      .shrink-block-grid {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .invitation-form-container {
+    border-bottom: 1px solid #eee;
+    padding-bottom : 1em;
+    color: #333;
+    margin-bottom: 1.4em;
+
+    input {
+      color: #333;
+      background: #eee;
+    }
+
+    button, .button {
+      margin: 0;
+      // color: #fff;
+    }
+
+    .invitation-form {
+      @include breakpoint(medium up) {
+        border-left: 1px solid #eee;
+      }
+    }
+  }
+
+  .invitation {
+    min-height: 6em;
+    margin: 0em;
+    box-shadow: 0px 0px 10px #f1f1f1;
+
+    .invitation-header {
+      padding: 0.6em 0;
+      text-align: center;
+      background: #f8f8f8;
+      border: 1px solid #ebebeb;
+      text-transform: uppercase;
+
+      h5 {
+        font-size: 1rem;
+        color: #aeaeae;
+        margin: 0;
+        letter-spacing: 3px;
+      }
+    }
+
+    .invitation-body {
+      padding: 1em;
+      border-left: 1px solid #E2E2E2;
+      border-right: 1px solid #E2E2E2;
+      border-bottom: 1px solid #E2E2E2;
+
+      .name {
+        font-size: 1.8rem;
+        line-height: 1.6rem;
+        margin-bottom: 0;
+        color: #666;
+        font-weight: 400;
+      }
+
+      .email {
+        color: #666;
+        margin-top: 0.5rem;
+      }
+
+      button, .button {
+        margin-bottom: 0;
+        background: #E9E9E9;
+        color: #666;
+        font-size: 0.8rem;
+
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+
+        &.red {
+          background: #ffe7e7;
+
+          &:hover {
+            background: #efd7d7;
+          }
+        }
+
+        &.green {
+          background: #e2f7df;
+
+           &:hover {
+            background: #d2e7cf;
+          }
+        }
+
+        &.grey {
+          background: #f4f4f4;
+
+          &:hover {
+            background: #e4e4e4;
+          }
+
+          &.disabled {
+            &:hover {
+              background: #f4f4f4;
+            }
+          }
+        }
+      }
+    }
+  }
+}

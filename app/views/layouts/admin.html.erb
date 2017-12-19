@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Drive Online Admin" %></title>
+
+    <%= stylesheet_link_tag    "admin/application" %>
+    <%= javascript_include_tag "admin/application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
+
+    <header>
+      <%= render 'admin/theme/navigation' %>
+    </header>
+
+    <main role="main">
+
+      <div class="row">
+        <div class="column">
+          <%= render 'admin/theme/messages' %>
+          <%= yield %>
+        </div>
+      </div>
+
+    </main>
+
+    <footer id="mainfoot">
+      <a class="credit" href="http://npmdigital.org">&copy;<%= Time.now.year %> North Point Ministries Digital team</a>
+    </footer>
+
+    <%= render 'admin/theme/analytics' %>
+
+    <%= yield :js %>
+
+  </body>
+</html>

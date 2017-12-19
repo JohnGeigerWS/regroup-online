@@ -1,0 +1,8 @@
+<div class="nested-fields row presenter-select">
+    <div class="small-11 columns">
+      <%= f.collection_select(:communicator_id, @communicators, :id, :name, {:prompt => "Select a communicator"}) %>
+    </div>
+    <div class="small-1 column">
+      <%= link_to_remove_association "<span class='fi-minus' />".html_safe, f %>
+    </div>
+</div>

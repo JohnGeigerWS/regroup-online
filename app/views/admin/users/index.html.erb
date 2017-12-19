@@ -1,0 +1,48 @@
+<div class="panel">
+  <div class="clearfix">
+      <h1 class="float-left">Users</h1>
+      <%= link_to 'New User', new_admin_user_path, class: "button float-right" %>
+  </div>
+
+  <table class="sortable-table responsive">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th>Organization</th>
+        <th>Purchased Tickets</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= readable_boolean(user.admin_role) %></td>
+          <td><%= user.org_name %></td>
+          <td><%= user.purchased_tickets %></td>
+          <td>
+            <div class="float-right">
+              <%= link_to '<i class="fi-pencil tooltips" data-original-title="Edit User" title="Edit User"></i>'.html_safe, edit_admin_user_path(user), class: "action-button edit" %>
+              <%= link_to '<i class="fi-trash tooltips" data-original-title="Delete User" title="Delete User"></i>'.html_safe, admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "action-button delete" %>
+              <ul class="dropdown menu" data-dropdown-menu style="display: inline-block; vertical-align: middle">
+                <li>
+                  <a href="#" class="action-button mail"><i class="fi-mail"></i></a>
+                  <ul class="menu mail-menu">
+                    <li><%= button_to "Resend Confirmation Email", admin_user_resend_confirmation_path(user), disabled: user.confirmed?, data: { confirm: 'Are you sure?' }, class: "button expanded" %></li>
+                    <li><%= button_to "Send Password Reset Email", admin_user_send_reset_password_path(user), data: { confirm: 'Are you sure?' }, class: 'button expanded' %></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,26 @@
+// MIXINS
+.shadow {
+  -webkit-box-shadow: 0 1px 4px rgba(128,128,128,.4);
+     -moz-box-shadow: 0 1px 4px rgba(128,128,128,.4);
+          box-shadow: 0 1px 4px rgba(128,128,128,.4);
+}
+
+.thin {
+  font-weight: 200 !important;
+}
+
+.info-list {
+  text-align: left;
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: 2rem;
+
+  li {
+    padding: 1.3rem 0;
+    border-bottom: 1px solid $lightgrey;
+
+    &:first-child {
+      border-top: 1px solid $lightgrey;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="small-12 medium-6 columns medium-centered">
+    <div class='drive-panel login-nudge-down'>
+      <div class="drive-panel-title">
+        <h3>Complete Your Registration</h3>
+      </div>
+      <div class="drive-panel-body">
+        <p>You're almost done! Now create a password to securely access your account.</p>
+        <%= form_for(resource, as: resource_name, url: confirmation_path, html: { method: :patch }) do |f| %>
+
+          <%= devise_error_messages! %>
+
+          <div class="field">
+            <%= f.label :password, "Password" %>
+            <%= f.password_field :password, :input_html => {:autofocus => true} %>
+            <%= f.label :password_confirmation, "Confirm Your Password" %>
+            <%= f.password_field :password_confirmation %>
+            <%= f.hidden_field :confirmation_token, :input_html => { :value => @original_token } %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Complete Registration", class: 'button expanded' %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

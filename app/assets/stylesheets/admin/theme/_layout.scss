@@ -1,0 +1,23 @@
+body {
+  background: $offwhite;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+footer#mainfoot {
+  background: $softwhite;
+  color: $lightgrey;
+  font-size: .8rem;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 4rem;
+}

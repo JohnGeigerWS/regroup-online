@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="small-12 medium-6 columns medium-centered">
+    <div class='drive-panel login-nudge-down'>
+      <div class="drive-panel-title">
+        Welcome NPM staff!
+      </div>
+
+      <div class="drive-panel-body">
+        <p>We are happy to make Drive Online available to you all this year. Please provide your Arena login to receive access. We will send you a follow-up email with instructions on how to complete the process.</p>
+        <%= form_tag 'chms/callback' do %>
+        <%= label_tag :username, "Arena Name" %>
+        <%= text_field_tag :username, nil, autofocus: true %>
+
+        <%= label_tag :password, "Password" %>
+        <%= password_field_tag :password, nil, autocomplete: "off"  %>
+        <%= submit_tag "SUBMIT", class: 'button expanded' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

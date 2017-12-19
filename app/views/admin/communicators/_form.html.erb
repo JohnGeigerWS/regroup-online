@@ -1,0 +1,8 @@
+<%= form_for([:admin, @communicator]) do |f| %>
+  <% if @communicator.errors.any? %>
+    <%= render partial: 'admin/partials/alert', locals: {item: @communicator, item_type: 'communicator'} %>
+  <% end %>
+
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :name} %>
+  <%= render partial: 'admin/partials/submit_button', locals: {f: f} %>
+<% end %>

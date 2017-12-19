@@ -1,0 +1,120 @@
+// TODO: Needs Re-Work
+header#masthead {
+  margin-bottom: 2rem;
+  z-index: 2;
+}
+
+// .top-bar, .top-bar-section li:not(.has-form) a:not(.button), .top-bar-section ul li, .contain-to-grid, .side-nav, .top-bar-section .dropdown li:not(.has-form):not(.active)>a:not(.button) {
+.top-bar, .top-bar ul {
+  background: $navbackground;
+}
+
+.top-bar {
+  padding: 0 0.5rem;
+
+  .header-logo {
+    padding: 1rem 0;
+  }
+
+  .menu-icon.dark::after {
+    background: #F9F9F9;
+    box-shadow: 0 7px 0 #F9F9F9, 0 14px 0 #F9F9F9 !important;
+  }
+
+  .menu {
+
+
+    li {
+      @include breakpoint(medium up) {
+        border-left: 1px solid #232323;
+        &:last-child {
+          border-right: 1px solid #232323;
+        }
+      }
+
+      &.mobile-menu-icon {
+        border: none;
+      }
+
+      &.menu-logo{
+        padding: 1.05rem 1rem;
+        border: none;
+      }
+
+      a {
+        padding: 1.2rem 1rem;
+        color: $softwhite;
+
+        &:hover {
+          background: lighten($navbackground, 5%);
+        }
+      }
+    }
+  }
+
+  // ul > {
+  //   li {
+
+  //     a {
+  //       font-size: .9rem;
+
+  //       i {
+  //         margin-right: 5px;
+
+  //         &.no-words {
+  //           margin-right: 0;
+  //           font-size: 1rem;
+  //         }
+  //       }
+
+  //       &:hover {
+  //         background: lighten( $dark, 10% ) !important;
+  //         color: $lightgrey !important;
+  //       }
+  //     }
+
+  //     &.active:not(.has-form) a:not(.button) {
+  //       background: lighten( $dark, 10%);
+  //       color: $white;
+
+  //       &:hover {
+  //         background: lighten( $dark, 10%);
+  //         color: $green;
+  //       }
+  //     }
+
+  //     &.right-divider {
+  //       border-right: 1px solid #202020;
+  //     }
+  //     &.left-divider {
+  //       border-left: 1px solid #202020;
+  //     }
+  //   }
+  // }// ul >
+
+  // ul.mobile-menu {
+  //   display: none;
+  // }
+
+}
+
+
+
+
+// // Navigation media sizes
+
+// // Larger than mobile
+// @media only screen and (min-width: 40.063em) {
+
+//   .top-bar-section li.active:not(.has-form) a:not(.button) {
+//     background: $navbackground;
+//     color: $dark;
+
+//     &:hover {
+//       background: $offwhite;
+//       color: lighten( $dark, 20%);
+//     }
+
+//   }
+
+// }

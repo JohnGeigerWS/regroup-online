@@ -1,0 +1,13 @@
+CHMS_AUTH_API_KEY: GET_THE_KEY_FROM_ANOTHER_DEV
+PG_USERNAME: username
+PG_PASSWORD:
+
+EMAIL_USERNAME: 'username'
+EMAIL_PASSWORD: 'password'
+EMAIL_SERVER: 'smtp.mailgun.org'
+EMAIL_PORT: 587
+EMAIL_FROM: 'noreply@localhost'
+ADMIN_EMAIL: 'webmaster@northpointministries.net'
+
+EVENTBRITE_API_TOKEN: 'YOUR_TOKEN_HERE'
+REDIS_URL: 'redis://localhost:6379'

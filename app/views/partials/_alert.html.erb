@@ -1,0 +1,10 @@
+<div class="alert callout">
+  <h5><%= pluralize(item.errors.count, "error") %> prohibited this <%= item_type ? item_type : 'record' %> from being saved:</h5>
+  <p>
+    <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </p>
+</div>

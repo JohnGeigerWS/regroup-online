@@ -1,0 +1,19 @@
+<div class="row collapse">
+  <div class="small-12 medium-4 columns">
+    <%= f.label label_name ||= field_name, class: 'prefix' %>
+  </div>
+  <div class="small-12 medium-8 columns">
+    <%= f.text_field field_name %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('#<%= "#{f.object.class}_#{ field_name }".downcase %>').fdatepicker({
+      format: 'yyyy-mm-dd hh:ii',
+      <%=  "initialDate: '#{@timeslot.send(field_name).localtime.strftime('%Y-%m-%d %H:%M')}',".html_safe if @timeslot.send(field_name) %>
+      disableDblClickSelection: true,
+      pickTime: true
+    });
+  });
+</script>

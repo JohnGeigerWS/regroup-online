@@ -1,0 +1,164 @@
+<div class="row page-container">
+  <div class="page-header clearfix">
+    <div class="small-12 columns">
+      <h2 class="header-title">Account</h2>
+    </div>
+  </div>
+
+  <div class="page-body clearfix">
+    <div class="small-12 medium-6 columns">
+      <h3>Pesonal Information</h3>
+      <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+          <%= render partial: 'partials/alert', locals: {item: @user, item_type: 'user'} %>
+        <% end %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :org_name, 'Organization' %>
+        <%= f.text_field :org_name %>
+
+
+        <% if controller.action_name == 'new' %>
+          <%= render partial: 'partials/form_field', locals: {f: f, field_type: 'password_field', field_name: :password} %>
+          <%= render partial: 'partials/form_field', locals: {f: f, field_type: 'password_field', field_name: :password_confirmation} %>
+        <% end %>
+
+        <%= f.submit "Save", class: "button expanded" %>
+      <% end %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <h3>Update Password</h3>
+      <%= form_for @user do |f| %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+
+        <%= f.submit "Save", class: "button expanded" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if @user.purchased_tickets > 0 %>
+<div class="row page-container">
+  <div class="page-header clearfix">
+    <div class="small-12 medium-6 columns">
+      <h2 class="header-title">Tickets</h2>
+    </div>
+    <div class="small-12 medium-6 columns ticket-container">
+      <p>
+        <i class="step fi-ticket size-36"></i><%= @user.purchased_tickets %> Tickets | <%= @user.remaining_tickets %> Remaining
+      </p>
+    </div>
+  </div>
+
+  <div class="page-body clearfix">
+    <div class="small-12 columns">
+      <div class='invitation-form-container'>
+        <div class="row">
+          <div class="small-12 medium-6 columns">
+            <h4>Working With Tickets:</h4>
+            <ul>
+              <li>Use your ticket invitations to create unique logins for your team members.</li>
+              <li>If members of your team are watching the conference together, feel free to only use 1 login.</li>
+              <li>When you send an invitation, they will receive an email from Drive Online with instructions on how to accept it and set up an account.</li>
+              <li>You can monitor the status of all your invitations below to make sure they are being used properly.</li>
+              <li>Your account counts as one ticket from the amount you purchased.</li>
+            </ul>
+          </div>
+
+          <div class="small-12 medium-6 columns invitation-form">
+            <h4>Send New Invitation:</h4>
+
+            <%= form_tag account_path do %>
+              <%= text_field_tag :first_name, nil, placeholder: "First Name" %>
+              <%= text_field_tag :last_name, nil, placeholder: "Last Name" %>
+              <%= text_field_tag :email, nil, placeholder: "email@example.com"  %>
+              <%= hidden_field_tag :invite_user, @user.id %>
+              <div class="clearfix">
+                <% if @user.has_invitations_left? %>
+                  <%= submit_tag "Send the Ticket Invite", class: 'button small text-center float-right' %>
+                <% else %>
+                  <h5>No more tickets available</h5>
+                <% end %>
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="small-12 columns">
+      <%= render 'invitations' %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+<% content_for :js do %>
+  <script type="text/javascript" src="assets/isotope.pkgd.min.js"></script>
+  <script>
+      $(document).ready(function(){
+          var qsRegex;
+          var buttonFilter;
+
+          // init Isotope
+          var $container = $('#invitation-collection').isotope({
+              itemSelector: '.invitation-container',
+              layoutMode: 'fitRows',
+              filter: function() {
+                  var $this = $(this);
+                  var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+                  var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
+                  return searchResult && buttonResult;
+              }
+          });
+
+          $('#filters').on( 'click', 'button', function() {
+              buttonFilter = $( this ).attr('data-filter');
+              $container.isotope();
+          });
+
+          // use value of search field to filter
+          var $quicksearch = $('#quicksearch').keyup( debounce( function() {
+              qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+              $container.isotope();
+          }) );
+
+
+          // change is-checked class on buttons
+          $('.button-group').each( function( i, buttonGroup ) {
+              var $buttonGroup = $( buttonGroup );
+              $buttonGroup.on( 'click', 'button', function() {
+                  $buttonGroup.find('.is-checked').removeClass('is-checked');
+                  $( this ).addClass('is-checked');
+              });
+          });
+
+          // debounce so filtering doesn't happen every millisecond
+          function debounce( fn, threshold ) {
+              var timeout;
+              return function debounced() {
+                  if ( timeout ) {
+                      clearTimeout( timeout );
+                  }
+                  function delayed() {
+                      fn();
+                      timeout = null;
+                  }
+                  setTimeout( delayed, threshold || 100 );
+              };
+          }
+      });
+  </script>
+<% end %>

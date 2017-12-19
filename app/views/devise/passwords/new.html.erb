@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="columns medium-5 medium-centered">
+    <div class="drive-panel login-nudge-down">
+      <div class="drive-panel-title">
+        Reset Your Password
+      </div>
+
+      <div class="drive-panel-body">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true %>
+
+          <%= f.submit "SEND PASSWORD RESET LINK", class: 'button expanded' %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

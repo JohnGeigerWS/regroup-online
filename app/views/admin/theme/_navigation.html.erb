@@ -1,0 +1,20 @@
+<div class="top-bar">
+  <div class="top-bar-title">
+    <span data-responsive-toggle="responsive-menu"  style="display: none;" data-hide-for="medium">
+      <span class="menu-icon dark" data-toggle></span>
+    </span>
+    <%= image_tag 'admin/logo.png', class: "header-logo" %>
+  </div>
+  <div id="responsive-menu"  style="display: none;">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <%= render 'admin/theme/navigation_links' %>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <%= render 'admin/theme/nav_links_for_auth' %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+body#sessions {
+  .presenter-container, .asset-container {
+    border: 1px solid #cacaca;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+
+    .add-field {
+      font-size: 1rem;
+    }
+
+    .fi-minus {
+      font-size: 1.5rem;
+    }
+
+    .fi-plus {
+      font-size: 1.2rem;
+    }
+  }
+
+  .asset-callout {
+    background: #f9f9f9;
+    border: 1px solid #eaeaea;
+    
+    label {
+      color: #4c4c4c;
+    }
+  }
+}

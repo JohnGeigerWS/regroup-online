@@ -1,0 +1,25 @@
+<nav id="main-navigation" class="clearfix" role="navigation">
+  <div class="row">
+    <div class="column">
+      <h1 id="logo">
+        <a href="<%= root_path %>">
+          <%= image_tag 'drive-logo.png', class: 'hide-for-small-only' %>
+          <%= image_tag 'drive_mark.png', class: 'show-for-small-only' %>
+        </a>
+      </h1>
+
+
+      <div id="main-menu" class="right">
+          <h6>
+            <%= link_to "Your Account | ", account_path if user_signed_in? %>
+            <%= link_to 'Support', new_support_request_path %>
+            <%= link_to " | Logout", destroy_user_session_path, method: :delete if user_signed_in? %>
+          </h6>
+
+        <div id="main-countdown">
+          <%= render partial: 'partials/countdown', locals: { live_state: live_state } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

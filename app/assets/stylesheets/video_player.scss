@@ -1,0 +1,26 @@
+.video-player {
+  background: #0E0E0E;
+}
+
+.message-information {
+  margin-bottom: 2rem;
+
+  .message-title {
+    color: #d8d8d8;
+    margin-bottom: 0;
+  }
+
+  .message-speaker {
+    margin-top: 0;
+    margin-bottom: 1.3rem;
+    font-size: 1.35rem;
+    color: #C0C0C0;
+    font-style: italic;
+  }
+
+  p {
+    color: #CDCDCD;
+    font-weight: 200;
+    margin-bottom: 1.3rem;
+  }
+}

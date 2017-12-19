@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="small-12 medium-6 columns medium-centered">
+    <div class='drive-panel login-nudge-down'>
+      <div class="drive-panel-title">
+        Submit a Request for Support
+      </div>
+
+      <div class="drive-panel-body">
+        <% if @support_request.errors.any? %>
+          <%= render partial: 'admin/partials/alert', locals: {item: @support_request, item_type: 'Support Request'} %>
+        <% end %>
+        <%= form_for @support_request, url: create_support_request_path do |f| %>
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name %>
+          <%= f.label :email, "Your Email" %>
+          <%= f.text_field :email %>
+          <%= f.label :subject, "Subject" %>
+          <%= f.text_field :subject %>
+          <%= f.label :message, "Your Message" %>
+        <%= f.text_area :message, placeholder: 'How can we help?', rows: 5 %>
+
+        <%= f.submit "SEND", class: 'button expanded' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

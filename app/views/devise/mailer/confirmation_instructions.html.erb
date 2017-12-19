@@ -1,0 +1,61 @@
+<% content_for :content do %>
+  <tr>
+    <td class="container-padding content" style="font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:16px;padding-left:42px;padding-right:42px;padding-top:50px;padding-bottom:40px;background-color:#ffffff; color:#666;">
+      <table>
+        <tr>
+          <td align="left" style="font-size: 26px;color:#7D7D7D; padding-bottom:24px; font-weight:200;">
+            Hello <%= @resource.first_name %>,
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size: 18px;line-height: 24px;color: #7D7D7D; padding-bottom:12px;">
+            We're so glad you're attending Drive Online 2017.
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size: 18px;line-height: 24px;color: #7D7D7D; padding-bottom:12px;">
+            We've processed your order of <%= pluralize((@resource.invitation_limit + 1), "ticket") %>.
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size: 18px;line-height: 24px;color: #7D7D7D;">
+            You only need to do a few things to get prepared for the conference. Lets get started by activating your account below.
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td align="center" style="width:600px;padding-top:50px;padding-bottom:50px;">
+            <%= render partial: 'devise/mailer/call_to_action_button', locals: { link: confirmation_url(@resource, confirmation_token: @token), text: 'Activate Your Ticket' } %>
+          </td>
+        </tr>
+      </table>
+
+
+      <table>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;color:#7D7D7D;">
+            Thanks,
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;color:#7D7D7D;margin-bottom:10px;">
+            The Drive Online Team
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+<% end %>
+<%= render template: "devise/mailer/layout" %>

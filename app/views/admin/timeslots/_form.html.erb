@@ -1,0 +1,19 @@
+<%= form_for([:admin, @timeslot]) do |f| %>
+  <% if @timeslot.errors.any? %>
+    <%= render partial: 'admin/partials/alert', locals: {item: @timeslot, item_type: 'timeslot'} %>
+  <% end %>
+
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :name} %>
+
+  <%= render partial: 'admin/partials/form_field', locals: {f: f, field_type: 'text_field', field_name: :permalink} %>
+
+  <%= render partial: 'admin/partials/datetime_field', locals: {f: f, field_name: :player_start_time} %>
+  
+  <%= render partial: 'admin/partials/datetime_field', locals: {f: f, field_name: :start_time} %>
+
+  <%= render partial: 'admin/partials/datetime_field', locals: {f: f, field_name: :end_time} %>
+
+  <%= render partial: 'admin/partials/datetime_field', locals: {f: f, field_name: :player_end_time} %>
+
+  <%= render partial: 'admin/partials/submit_button', locals: {f: f} %>
+<% end %>

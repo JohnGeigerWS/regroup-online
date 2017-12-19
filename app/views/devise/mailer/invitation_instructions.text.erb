@@ -1,0 +1,9 @@
+Hello <%= @resource.first_name %>,
+
+We're so glad you're attending Drive Online 2017.
+You only need to do a few things to get prepared for the conference. Lets get started by activating your ticket using the link below.
+
+Thanks,
+The Drive Online Team
+
+<%= accept_invitation_url(@resource, :invitation_token => @token) %>
