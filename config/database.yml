@@ -7,15 +7,15 @@ default: &default
 
 development:
   <<: *default
-  database: dev_r_drive_online
+  database: dev_r_regroup_online
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: test_r_drive_online
+  database: test_r_regroup_online
 
 production:
   <<: *default
-  database: r_drive_online
+  database: r_regroup_online
