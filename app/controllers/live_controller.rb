@@ -3,6 +3,7 @@ class LiveController < ApplicationController
   def index
     @live_state    = LiveState.get_current_state
     @live_timeslot = Timeslot.live
+    abort("Message goes here")
 
     session  = Session.find( params[:session] ) if params[:session].present?
     session  = @live_timeslot.sessions.first if (session.nil? && @live_timeslot.present?)
