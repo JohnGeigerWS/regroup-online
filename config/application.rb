@@ -14,7 +14,7 @@ module DriveOnline
     config.active_job.queue_adapter = :sidekiq
     config.cache_store = :redis_store, "#{ENV['REDIS_URL']}/0/cache", { expires_in: 24.hours }
     config.paths.add 'app/presenters', :eager_load => true
-
+    abort('aborted')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
