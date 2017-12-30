@@ -6,7 +6,7 @@
       </div>
 
       <div class="drive-panel-body">
-        <p>We are happy to make Drive Online available to you all this year. Please provide your Arena login to receive access. We will send you a follow-up email with instructions on how to complete the process.</p>
+        <p>We are happy to make <%= ENV['SITE_NAME'] %> available to you all this year. Please provide your Arena login to receive access. We will send you a follow-up email with instructions on how to complete the process.</p>
         <%= form_tag 'chms/callback' do %>
         <%= label_tag :username, "Arena Name" %>
         <%= text_field_tag :username, nil, autofocus: true %>

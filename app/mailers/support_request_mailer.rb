@@ -7,7 +7,7 @@ class SupportRequestMailer < ApplicationMailer
     admin_email = ENV["ADMIN_EMAIL"]
     
     if admin_email
-      mail(to: admin_email, subject: "A Drive Online support request was submitted")
+      mail(to: admin_email, subject: "A <%= ENV['SITE_NAME'] %> support request was submitted")
     end
 
   end

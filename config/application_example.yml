@@ -11,3 +11,5 @@ ADMIN_EMAIL: 'webmaster@northpointministries.net'
 
 EVENTBRITE_API_TOKEN: 'YOUR_TOKEN_HERE'
 REDIS_URL: 'redis://localhost:6379'
+
+SITE_NAME: 'Regroup Online'

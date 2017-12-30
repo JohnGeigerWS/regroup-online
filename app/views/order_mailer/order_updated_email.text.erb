@@ -1,6 +1,6 @@
 Hello <%= @user.first_name %>,
 
-Your Drive Online 2017 order has been updated.
+Your <%= ENV['SITE_NAME'] %> 2017 order has been updated.
 You now have <%= @user.invitation_limit + 1 %> tickets!
 
 =====================
@@ -11,4 +11,4 @@ You can manage your purchased tickets by signing in to your account below.
 
 =====================
 
-The Drive Online Team
+The <%= ENV['SITE_NAME'] %> Team

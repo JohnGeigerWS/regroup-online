@@ -11,6 +11,7 @@ module DriveOnline
     # TODO: Why is the services dir not autoloading?
     config.time_zone = 'Eastern Time (US & Canada)'
     config.autoload_paths << "#{Rails.root}/app/services"
+    config.eager_load_paths << "#{Rails.root}/app/services"
     config.active_job.queue_adapter = :sidekiq
     config.cache_store = :redis_store, "#{ENV['REDIS_URL']}/0/cache", { expires_in: 24.hours }
     config.paths.add 'app/presenters', :eager_load => true

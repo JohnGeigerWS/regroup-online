@@ -1,6 +1,6 @@
 {
   title: "Navigating Culture",
-  description: "Welcome to Drive Online 15! Be sure to tune in to our very first session with our lead pastor, Andy Stanley. And join in on the conversation by following @DriveOnline15 on Twitter.",
+  description: "Welcome to <%= ENV['SITE_NAME'] %> 15! Be sure to tune in to our very first session with our lead pastor, Andy Stanley. And join in on the conversation by following @DriveOnline15 on Twitter.",
   permalink: "navigating-culture",
   timeslot: 1,
   type: "main",
@@ -120,7 +120,7 @@
 },
 {
   title: "That's A Great Question",
-  description: "Please join us for our very last session of Drive Online 15. To close us out, Andy will be speaking to us and you won’t want to miss it!",
+  description: "Please join us for our very last session of <%= ENV['SITE_NAME'] %> 15. To close us out, Andy will be speaking to us and you won’t want to miss it!",
   permalink: "great-question",
   timeslot: 8,
   type: "main",

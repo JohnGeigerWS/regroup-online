@@ -1,7 +1,6 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  abort('aborted')
   devise_for :user, :controllers => {:confirmations => 'confirmations'}
 
   devise_scope :user do

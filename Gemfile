@@ -19,7 +19,7 @@ gem 'puma', '~> 3.0'
 gem 'redis', '~> 3.0'
 gem 'redis-rails', '~> 5.0', '>= 5.0.1'
 gem 'sidekiq', '~> 4.2', '>= 4.2.7'
-gem 'sinatra', git: 'https://github.com/sinatra/sinatra', :require => nil
+gem 'sinatra', git: 'https://github.com/sinatra/sinatra', require: nil
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'

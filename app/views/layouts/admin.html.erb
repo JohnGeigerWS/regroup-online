@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Drive Online Admin" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : ENV['SITE_NAME'] + "Admin" %></title>
 
     <%= stylesheet_link_tag    "admin/application" %>
     <%= javascript_include_tag "admin/application", 'data-turbolinks-track' => true %>
