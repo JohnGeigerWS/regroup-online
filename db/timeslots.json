@@ -7,7 +7,7 @@
     "sessions": [
       {
         "title": "Navigating Culture",
-        "description": "Welcome to <%= ENV['SITE_NAME'] %> 15! Be sure to tune in to our very first session with our lead pastor, Andy Stanley. And join in on the conversation by following @DriveOnline15 on Twitter.",
+        "description": "Welcome to Drive Online 15! Be sure to tune in to our very first session with our lead pastor, Andy Stanley. And join in on the conversation by following @DriveOnline15 on Twitter.",
         "permalink": "navigating-culture"
       }
     ]

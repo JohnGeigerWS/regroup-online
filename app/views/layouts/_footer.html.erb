@@ -1,7 +1,7 @@
 <footer id="footer">
     <div class="row">
         <div class="columns text-center">
-            <%= image_tag 'drive_mark.png' %>
+            <%= image_tag ENV['SITE_LOGO_SMALL'] %>
             <p>&copy; <%= Time.now.year %> <a href="http://northpointministries.org/" target="_blank">NORTH POINT MINISTRIES</a> | <%= link_to 'SUPPORT', new_support_request_path %></p>
         </div>
     </div>

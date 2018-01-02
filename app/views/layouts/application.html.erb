@@ -12,6 +12,15 @@
     <script src="https://use.typekit.net/vej7vmg.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <%= render partial: 'layouts/analytics' %>
+    # adding CSS to the head for custimization
+    <style>
+      body, h1, h2, h3, h4, h5, h6, h7, a {
+        color: <%= ENV['SITE_COLOR1'] %>;
+      }
+      .page-container, .page-header, .button {
+        background: <%= ENV['SITE_COLOR1'] %>;
+      }
+    </style>
   </head>
 
   <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
