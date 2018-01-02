@@ -17,9 +17,16 @@
       body, h1, h2, h3, h4, h5, h6, h7, a, .drive-panel .drive-panel-title {
         color: <%= ENV['SITE_COLOR1'] %>;
       }
+      a:hover {
+        color: <%= ENV['SITE_COLOR1_HOVER'] %>;
+      }
       .page-container .page-header, .button {
         background: <%= ENV['SITE_COLOR1'] %>;
       }
+      .button:hover {
+        background: <%= ENV['SITE_COLOR1_HOVER'] %>;
+      }
+
     </style>
   </head>
 
