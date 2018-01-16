@@ -31,6 +31,16 @@ module DriveOnline
       :enable_starttls_auto => true,
       :openssl_verify_mode  => 'none'
     }
-    config.action_mailer.delivery_method = :smtp
+    # :smtp for above :mailgun for below
+    config.action_mailer.delivery_method = :mailgun
+    config.action_mailer.mailgun_settings = {
+        api_key: ENV['MAILGUN_API_KEY'],
+        domain: ENV['MAILGUN_DOMAIN'],
+        public_key: ENV['MAILGUN_PUBLIC_KEY'],
+        smtp_login: ENV['MAILGUN_SMTP_LOGIN'],
+        smtp_password: ENV['MAILGUN_SMTP_PASSWORD'],
+        smtp_port: ENV['MAILGUN_SMTP_PORT'],
+        smtp_server: ENV['MAILGUN_SMTP_SERVER']
+    }
   end
 end
